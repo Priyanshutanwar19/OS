@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Efficient Garbage Collection in OS</title>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <h1>Efficient Garbage Collection in OS</h1>
+    <p>Interactive Simulation and Visualization</p>
+    <nav>
+      <button onclick="location.href='#introduction'">Introduction</button>
+      <button onclick="location.href='#simulation'">Simulation</button>
+      <button onclick="location.href='#results'">Results</button>
+      <button onclick="location.href='about.html'">About</button>
+      <button onclick="location.href='working.html'">Working</button>
+      <button onclick="location.href='comparison.html'">Comparison</button>
+      <button onclick="location.href='faq.html'">FAQ</button>
+      <button onclick="location.href='#contact'">Contact</button>
+    </nav>
+  </header>
+
+  <!-- Introduction Section -->
+  <section id="introduction">
+    <h2>Introduction</h2>
+    <p>Explore how garbage collection works in an operating system using the Mark and Sweep algorithm. This simulation demonstrates memory management and how objects are efficiently cleaned up.</p>
+  </section>
+
+  <!-- Simulation Section -->
+  <section id="simulation">
+    <h2>Simulation</h2>
+    <button onclick="startSimulation()">Start Simulation</button>
+    <div id="memory-view">
+      <!-- Memory Visualization will appear here -->
+    </div>
+    <div id="log-output"></div>
+  </section>
+
+  <!-- Results Section -->
+  <section id="results">
+    <h2>Results</h2>
+    <p>Visualize the results of the garbage collection process. Track memory usage before and after garbage collection.</p>
+    <canvas id="visualizationCanvas" width="600" height="400"></canvas>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>We would love to hear from you. Feel free to reach out for any queries, feedback, or suggestions.</p>
+
+    <div class="contact-container">
+      <!-- Contact Form -->
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p><strong>Email:</strong> support@osproject.com</p>
+        <p><strong>Phone:</strong> +91 1234567890</p>
+        <p><strong>Address:</strong> LPU, Punjab, India</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contributors Section -->
+  <section id="contributors">
+    <h2>Contributors</h2>
+    <ul>
+      <li>Priyanshu Tanwar</li>
+      <li>Kunal Kumar</li>
+      <li>Mohit Sharma</li>
+    </ul>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 Efficient Garbage Collection Simulation | Created for OS Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="memory_management.js"></script>
+  <script src="mark_and_sweep.js"></script>
+  <script src="visualization.js"></script>
+</body>
+</html>
