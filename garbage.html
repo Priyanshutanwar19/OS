@@ -53,7 +53,7 @@
 
     <div class="contact-container">
       <!-- Contact Form -->
-      <form>
+      <form id="contactForm">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" placeholder="Your Name" required>
 
@@ -93,6 +93,13 @@
   <footer>
     <p>&copy; 2025 Efficient Garbage Collection Simulation | Created for OS Project</p>
   </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Thank you for contacting us! We will get back to you soon.');
+    });
+  </script>
 
   <script src="script.js"></script>
   <script src="memory_management.js"></script>
