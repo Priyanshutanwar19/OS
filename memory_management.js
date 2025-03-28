@@ -1,4 +1,5 @@
-// Memory Management for Mark and Sweep Simulation
+// memory_management.js - Memory Management for Mark and Sweep Simulation
+
 const memorySize = 20;
 let memory = [];
 
@@ -12,21 +13,20 @@ function initializeMemory() {
       reachable: false
     });
   }
+  logMessage('Memory Initialized');
   renderMemory();
 }
 
-// Mark Phase - Identify Reachable Blocks
+// Perform Mark Phase - Identify Reachable Blocks
 function markPhase() {
   memory.forEach(block => {
-    if (block.status === 'used' && Math.random() > 0.4) {
-      block.reachable = true;
-    }
+    block.reachable = block.status === 'used' && Math.random() > 0.4;
   });
-  logMessage('Mark Phase Complete: Reachable blocks identified.');
+  logMessage('Mark Phase: Reachable nodes identified.');
   renderMemory();
 }
 
-// Sweep Phase - Free Unreachable Blocks
+// Perform Sweep Phase - Free Unreachable Blocks
 function sweepPhase() {
   memory = memory.map(block => {
     if (block.status === 'used' && !block.reachable) {
@@ -34,19 +34,24 @@ function sweepPhase() {
     }
     return block;
   });
-  logMessage('Sweep Phase Complete: Unreachable blocks freed.');
+  logMessage('Sweep Phase: Unreachable nodes cleaned up.');
   renderMemory();
+  drawVisualization();
 }
 
 // Render Memory Blocks to Display
 function renderMemory() {
   const container = document.getElementById('memory-view');
+  if (!container) {
+    console.error("Memory view container not found!");
+    return;
+  }
   container.innerHTML = '';
 
   memory.forEach(block => {
     const div = document.createElement('div');
-    div.className = `block ${block.status} ${block.reachable ? 'reachable' : ''}`;
-    div.textContent = block.id;
+    div.className = `memory-block ${block.status} ${block.reachable ? 'reachable' : ''}`;
+    div.textContent = `Block ${block.id}`;
     container.appendChild(div);
   });
 }
@@ -54,6 +59,10 @@ function renderMemory() {
 // Log Simulation Messages
 function logMessage(message) {
   const logOutput = document.getElementById('log-output');
+  if (!logOutput) {
+    console.error("Log output container not found!");
+    return;
+  }
   const logEntry = document.createElement('p');
   logEntry.textContent = message;
   logOutput.appendChild(logEntry);
@@ -64,5 +73,5 @@ function startSimulation() {
   initializeMemory();
   markPhase();
   sweepPhase();
-  logMessage('Simulation Completed.');
+  logMessage('Simulation Completed and Visualized.');
 }
