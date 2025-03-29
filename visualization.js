@@ -1,4 +1,4 @@
-// visualization.js - Visualizing Memory Management Results
+// visualization.js - Enhanced Visualizing Memory Management Results with Animations
 
 function drawVisualization() {
   const canvas = document.getElementById('visualizationCanvas');
@@ -23,6 +23,9 @@ function drawVisualization() {
   // Draw each block with status and color
   memory.forEach((block, index) => {
     ctx.fillStyle = block.status === 'free' ? '#d1d1d1' : block.reachable ? '#4CAF50' : '#F44336';
+
+    // Add transition animation effect
+    ctx.globalAlpha = block.status === 'free' ? 0.5 : 1;
     ctx.fillRect(index * blockWidth, canvas.height / 4, blockWidth - 2, blockHeight);
 
     // Block Labels
@@ -34,7 +37,7 @@ function drawVisualization() {
   logMessage('Visualization Updated.');
 }
 
-// Update Visualization after Sweep Phase
+// Update Visualization after Sweep Phase with Smooth Animation
 function sweepPhase() {
   if (!memory || memory.length === 0) {
     console.error('Error: Memory not initialized.');
@@ -50,7 +53,9 @@ function sweepPhase() {
 
   logMessage('Sweep Phase: Unreachable nodes cleaned up.');
   renderMemory();
-  drawVisualization();
+
+  // Apply visualization update with a slight delay for effect
+  setTimeout(drawVisualization, 500);
 }
 
 // Ensure Visualization on Mark and Sweep Completion

@@ -101,6 +101,7 @@ button:hover {
   font-size: 12px;
   color: #fff;
   border-radius: 5px;
+  transition: all 0.5s ease;
 }
 
 .used {
@@ -114,7 +115,6 @@ button:hover {
 .reachable {
   background-color: #FFA500; /* Orange for Reachable */
 }
-
 
 #log-output {
   margin-top: 20px;
@@ -130,6 +130,7 @@ button:hover {
   margin-top: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  background-color: #f0f0f0;
 }
 
 /* Footer Styling */
@@ -170,4 +171,4 @@ footer p {
     font-size: 0.9em;
     padding: 10px;
   }
-} 
+}

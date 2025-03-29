@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="abouts.css" />
+  <title>About - Mark and Sweep Simulation</title>
+</head>
+<body>
+  <header>
+    <h1>About Mark and Sweep Simulation</h1>
+    <p>Learn more about how memory management works using the Mark and Sweep algorithm.</p>
+  </header>
+
+  <nav>
+    <a href="garbage.html"><button>Home</button></a>
+    <a href="#working"><button>How It Works</button></a>
+    <a href="#team"><button>Our Team</button></a>
+    <a href="#contact"><button>Contact</button></a>
+  </nav>
+
+  <section id="working" class="container">
+    <h2>How the Simulation Works</h2>
+    <p>The Mark and Sweep algorithm is a two-phase process used in memory management:</p>
+    <ul>
+      <li><strong>Mark Phase:</strong> It traverses memory blocks to mark reachable ones.</li>
+      <li><strong>Sweep Phase:</strong> It clears all unreachable memory blocks, freeing up space.</li>
+    </ul>
+    <p>Our simulation visualizes these phases, making the memory management concept easier to understand.</p>
+  </section>
+
+  <section id="team" class="container">
+    <h2>Meet Our Team</h2>
+    <p>Our simulation project was developed by a dedicated team passionate about computer science and memory management:</p>
+    <ul>
+      <li>Priyanshu Tanwar </li>
+      <li>Kunal Kumar</li>
+      <li>Mohit Sharma</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="container">
+    <h2>Contact Us</h2>
+    <p>Have questions or feedback? Reach out to us using the form below.</p>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Mark and Sweep Simulation. All rights reserved.</p>
+  </footer>
+</body>
+</html>

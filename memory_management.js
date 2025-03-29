@@ -1,10 +1,13 @@
-// memory_management.js - Memory Management for Mark and Sweep Simulation
+// memory_management.js - Enhanced Memory Management for Mark and Sweep Simulation
 
-const memorySize = 20;
 let memory = [];
+let memorySize = 20;
+let markProbability = 0.4;
 
 // Initialize Memory Blocks
-function initializeMemory() {
+function initializeMemory(size = 20, probability = 0.4) {
+  memorySize = size;
+  markProbability = probability;
   memory = [];
   for (let i = 0; i < memorySize; i++) {
     memory.push({
@@ -13,16 +16,16 @@ function initializeMemory() {
       reachable: false
     });
   }
-  logMessage('Memory Initialized');
+  logMessage(`Memory Initialized with ${memorySize} blocks and Mark Probability ${markProbability * 100}%`);
   renderMemory();
 }
 
 // Perform Mark Phase - Identify Reachable Blocks
 function markPhase() {
   memory.forEach(block => {
-    block.reachable = block.status === 'used' && Math.random() > 0.4;
+    block.reachable = block.status === 'used' && Math.random() < markProbability;
   });
-  logMessage('Mark Phase: Reachable nodes identified.');
+  logMessage('Mark Phase Complete: Reachable blocks identified.');
   renderMemory();
 }
 
@@ -34,7 +37,7 @@ function sweepPhase() {
     }
     return block;
   });
-  logMessage('Sweep Phase: Unreachable nodes cleaned up.');
+  logMessage('Sweep Phase Complete: Unreachable blocks cleaned up.');
   renderMemory();
   drawVisualization();
 }
@@ -42,10 +45,7 @@ function sweepPhase() {
 // Render Memory Blocks to Display
 function renderMemory() {
   const container = document.getElementById('memory-view');
-  if (!container) {
-    console.error("Memory view container not found!");
-    return;
-  }
+  if (!container) return;
   container.innerHTML = '';
 
   memory.forEach(block => {
@@ -59,10 +59,7 @@ function renderMemory() {
 // Log Simulation Messages
 function logMessage(message) {
   const logOutput = document.getElementById('log-output');
-  if (!logOutput) {
-    console.error("Log output container not found!");
-    return;
-  }
+  if (!logOutput) return;
   const logEntry = document.createElement('p');
   logEntry.textContent = message;
   logOutput.appendChild(logEntry);
@@ -70,8 +67,36 @@ function logMessage(message) {
 
 // Start the Simulation
 function startSimulation() {
-  initializeMemory();
+  const sizeInput = parseInt(document.getElementById('memorySize').value);
+  const probInput = parseFloat(document.getElementById('markProbability').value) / 100;
+
+  if (sizeInput > 0 && sizeInput <= 500) memorySize = sizeInput;
+  if (probInput >= 0 && probInput <= 1) markProbability = probInput;
+
+  initializeMemory(memorySize, markProbability);
+  logMessage('Starting Simulation...');
   markPhase();
-  sweepPhase();
-  logMessage('Simulation Completed and Visualized.');
+  setTimeout(() => sweepPhase(), 1500);
 }
+
+// Reset Simulation
+function resetSimulation() {
+  initializeMemory();
+  logMessage('Memory Reset Completed.');
+}
+
+// Step-by-Step Simulation
+function stepSimulation() {
+  markPhase();
+  setTimeout(() => sweepPhase(), 1500);
+}
+
+// Pause Simulation
+function pauseSimulation() {
+  logMessage('Simulation Paused.');
+}
+
+// Validate Functions and Dependencies
+window.onload = function () {
+  logMessage('Scripts loaded successfully. Ready to start the simulation!');
+};

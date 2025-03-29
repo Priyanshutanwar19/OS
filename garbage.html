@@ -32,7 +32,27 @@
   <!-- Simulation Section -->
   <section id="simulation">
     <h2>Simulation</h2>
-    <button onclick="startSimulation()">Start Simulation</button>
+
+    <!-- Controls Section -->
+    <div class="controls">
+      <label for="memorySize">Memory Size:</label>
+      <input type="number" id="memorySize" min="10" max="100" value="20">
+
+      <label for="markProbability">Mark Probability (%):</label>
+      <input type="number" id="markProbability" min="10" max="100" value="60">
+
+      <label for="speedControl">Simulation Speed:</label>
+      <input type="range" id="speedControl" min="1" max="5" step="1" value="3">
+    </div>
+
+    <!-- Simulation Control Buttons -->
+    <div class="simulation-buttons">
+      <button onclick="startSimulation()">Start Simulation</button>
+      <button onclick="stepSimulation()">Next Step</button>
+      <button onclick="pauseSimulation()">Pause</button>
+      <button onclick="resetSimulation()">Reset</button>
+    </div>
+
     <div id="memory-view">
       <!-- Memory Visualization will appear here -->
     </div>
