@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="workings.css" />
+  <title>Working - Efficient Garbage Collection in OS</title>
+</head>
+<body>
+  <header>
+    <h1>Working of Efficient Garbage Collection in OS</h1>
+    <p>Understanding the Mark and Sweep Algorithm</p>
+    <nav>
+      <button onclick="location.href='index.html'">Home</button>
+      <button onclick="location.href='about.html'">About</button>
+      <button onclick="location.href='comparison.html'">Comparison</button>
+      <button onclick="location.href='faq.html'">FAQ</button>
+      <button onclick="location.href='contact.html'">Contact</button>
+    </nav>
+  </header>
+
+  <section id="overview">
+    <h2>Overview</h2>
+    <p>The Mark and Sweep algorithm is a fundamental technique used for garbage collection in operating systems. It is divided into two phases: the <b>Mark Phase</b> and the <b>Sweep Phase</b>. Our simulation visually demonstrates how memory blocks are managed using this algorithm.</p>
+  </section>
+
+  <section id="step1">
+    <h2>Step 1: Memory Initialization</h2>
+    <p>At the start, memory is initialized with a fixed number of blocks. Each block can be in one of the following states:</p>
+    <ul>
+      <li><b>Used:</b> The block is occupied by an object.</li>
+      <li><b>Free:</b> The block is empty and available for allocation.</li>
+      <li><b>Reachable:</b> A block that is still in use and accessible.</li>
+    </ul>
+    <p>In the simulation, green indicates used memory, grey indicates free memory, and orange highlights reachable blocks.</p>
+  </section>
+
+  <section id="step2">
+    <h2>Step 2: Mark Phase</h2>
+    <p>During the mark phase, the algorithm identifies which memory blocks are reachable. The process involves:</p>
+    <ul>
+      <li>Traversing memory to find all blocks marked as used.</li>
+      <li>Using a simulation of object references to check if blocks are reachable.</li>
+      <li>Marking these reachable blocks for retention.</li>
+    </ul>
+    <p>In this phase, the memory visualization highlights reachable blocks in orange. Unreachable blocks remain in their previous state.</p>
+  </section>
+
+  <section id="step3">
+    <h2>Step 3: Sweep Phase</h2>
+    <p>After marking, the sweep phase removes all blocks that are not reachable. The steps include:</p>
+    <ul>
+      <li>Scanning memory for blocks marked as unreachable.</li>
+      <li>Releasing the memory of these blocks and setting their status to free.</li>
+      <li>Visualizing the result, where free blocks are shown in grey.</li>
+    </ul>
+    <p>This phase ensures that memory is efficiently managed by eliminating unused blocks.</p>
+  </section>
+
+  <section id="step4">
+    <h2>Step 4: Visualization</h2>
+    <p>Once the simulation completes, the visualization displays the memory status. The results include:</p>
+    <ul>
+      <li>A graphical representation of memory blocks.</li>
+      <li>Color-coded blocks indicating their state (Free, Used, Reachable).</li>
+      <li>Logs displaying the step-by-step progress of the algorithm.</li>
+    </ul>
+    <p>This interactive visualization makes understanding garbage collection intuitive and clear.</p>
+  </section>
+
+  <section id="features">
+    <h2>Additional Features</h2>
+    <ul>
+      <li><b>Real-time Visualization:</b> The memory state is updated in real-time using canvas graphics.</li>
+      <li><b>Error Handling:</b> Clear error messages are shown if memory is not initialized properly.</li>
+      <li><b>Interactive Controls:</b> Users can start and reset simulations easily using buttons.</li>
+    </ul>
+  </section>
+
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>The Mark and Sweep algorithm is an essential component of memory management in operating systems. By simulating this algorithm, users can visually understand how memory is allocated and deallocated, ensuring efficient garbage collection.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Efficient Garbage Collection Simulation | Created for OS Project</p>
+  </footer>
+</body>
+</html>
