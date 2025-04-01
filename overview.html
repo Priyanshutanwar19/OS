@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="overviews.css" />
+  <title>Comparison - Efficient Garbage Collection in OS</title>
+</head>
+<body>
+  <header>
+    <h1>Comparison of Garbage Collection Algorithms</h1>
+    <p>A Detailed Comparison of Mark and Sweep with Other Algorithms</p>
+    <nav>
+      <button onclick="location.href='garbage.html'">Home</button>
+      <button onclick="location.href='about.html'">About</button>
+      <button onclick="location.href='working.html'">Working</button>
+      <button onclick="location.href='overview.html'">Overview</button>
+      <button onclick="location.href='faq.html'">FAQ</button>
+      <button onclick="location.href='contact.html'">Contact</button>
+    </nav>
+  </header>
+
+  <section id="introduction">
+    <h2>Introduction</h2>
+    <p>Garbage collection algorithms play a significant role in memory management in modern operating systems. Here, we compare the Mark and Sweep algorithm with other commonly used algorithms like Reference Counting, Stop-and-Copy, and Generational Garbage Collection.</p>
+  </section>
+
+  <section id="comparison-table">
+    <h2>Comparison Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Criteria</th>
+          <th>Mark and Sweep</th>
+          <th>Reference Counting</th>
+          <th>Stop-and-Copy</th>
+          <th>Generational GC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Algorithm Type</td>
+          <td>Tracing</td>
+          <td>Counting</td>
+          <td>Tracing</td>
+          <td>Hybrid</td>
+        </tr>
+        <tr>
+          <td>Memory Efficiency</td>
+          <td>High</td>
+          <td>Medium</td>
+          <td>Low</td>
+          <td>Very High</td>
+        </tr>
+        <tr>
+          <td>Time Complexity</td>
+          <td>O(n)</td>
+          <td>O(n)</td>
+          <td>O(n)</td>
+          <td>O(1) for young generation</td>
+        </tr>
+        <tr>
+          <td>Fragmentation</td>
+          <td>Low</td>
+          <td>Medium</td>
+          <td>None (Compacts memory)</td>
+          <td>Low</td>
+        </tr>
+        <tr>
+          <td>Pause Time</td>
+          <td>Medium</td>
+          <td>Low</td>
+          <td>High</td>
+          <td>Low for young, High for old</td>
+        </tr>
+        <tr>
+          <td>Real-World Usage</td>
+          <td>JVM, Python GC</td>
+          <td>Objective-C, Python</td>
+          <td>Embedded Systems</td>
+          <td>JVM, .NET</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="advantages-disadvantages">
+    <h2>Advantages and Disadvantages</h2>
+    <h3>Mark and Sweep</h3>
+    <ul>
+      <li><b>Advantages:</b> Simple implementation, no memory fragmentation.</li>
+      <li><b>Disadvantages:</b> Can cause application pause during collection, not ideal for real-time systems.</li>
+    </ul>
+
+    <h3>Reference Counting</h3>
+    <ul>
+      <li><b>Advantages:</b> Continuous memory management, no global pause.</li>
+      <li><b>Disadvantages:</b> Cannot detect circular references.</li>
+    </ul>
+
+    <h3>Stop-and-Copy</h3>
+    <ul>
+      <li><b>Advantages:</b> Eliminates fragmentation, simple memory management.</li>
+      <li><b>Disadvantages:</b> Wastes memory as half of the memory is unused at any time.</li>
+    </ul>
+
+    <h3>Generational Garbage Collection</h3>
+    <ul>
+      <li><b>Advantages:</b> Efficient for applications with a large number of short-lived objects.</li>
+      <li><b>Disadvantages:</b> Complex implementation, longer pause times for old-generation collections.</li>
+    </ul>
+  </section>
+
+  <section id="conclusion">
+    <h2>Conclusion</h2>
+    <p>Choosing the right garbage collection algorithm depends on the application requirements. Mark and Sweep remains a solid choice for systems that prioritize memory efficiency and have acceptable pause times. However, for applications that require low-latency and real-time processing, other algorithms like Generational GC might be preferred.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Efficient Garbage Collection Simulation | Created for OS Project</p>
+  </footer>
+</body>
+</html>
