@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Garbage Collection Simulation</title>
+    <link rel="stylesheet" href="faqs.css">
+</head>
+<body>
+    <header>
+        <h1>FAQ - Garbage Collection Simulation</h1>
+        <p>Find answers to common questions about our garbage collection simulation.</p>
+        <button onclick="window.location.href='garbage.html'" class="home-button">Home</button>
+    </header>
+    
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">What is garbage collection in an operating system?</div>
+            <div class="faq-answer">Garbage collection (GC) is a form of automatic memory management that helps reclaim memory occupied by objects that are no longer in use. It prevents memory leaks, optimizes performance, and improves system stability. GC is crucial in languages like Java, Python, and C#, where memory management is handled automatically. Without garbage collection, developers would need to manually allocate and deallocate memory, increasing the risk of memory-related bugs.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How does the Mark and Sweep algorithm work?</div>
+            <div class="faq-answer">The Mark and Sweep algorithm consists of two phases:
+                <ul>
+                    <li><strong>Mark Phase:</strong> The algorithm traverses from the root objects (like global variables or active stack references) and marks all reachable memory blocks as active.</li>
+                    <li><strong>Sweep Phase:</strong> The algorithm scans memory and deallocates unmarked (unreachable) memory blocks, freeing up space for future use.</li>
+                </ul>
+                This method ensures that only actively used objects remain in memory while unused ones are safely removed. It is widely used due to its efficiency in memory cleanup.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">What are the advantages of using garbage collection?</div>
+            <div class="faq-answer">
+                Garbage collection offers multiple benefits:
+                <ul>
+                    <li>Automatically manages memory, reducing the likelihood of memory leaks.</li>
+                    <li>Prevents issues like dangling pointers, which can cause unpredictable behavior in applications.</li>
+                    <li>Ensures efficient memory utilization by reclaiming unused memory blocks.</li>
+                    <li>Allows developers to focus on core application logic instead of manual memory management.</li>
+                    <li>Reduces security vulnerabilities associated with manual memory handling, such as buffer overflows.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Why is garbage collection important in programming?</div>
+            <div class="faq-answer">
+                Garbage collection is essential because it:
+                <ul>
+                    <li>Prevents memory leaks by ensuring unused memory is reclaimed.</li>
+                    <li>Enhances application stability by eliminating memory corruption risks.</li>
+                    <li>Reduces the chances of crashes caused by improper memory deallocation.</li>
+                    <li>Supports scalability in modern applications by dynamically managing memory needs.</li>
+                    <li>Allows developers to write cleaner and more maintainable code, improving long-term project sustainability.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Does garbage collection impact performance?</div>
+            <div class="faq-answer">
+                Yes, garbage collection can introduce performance overhead, especially in real-time applications. However, modern garbage collectors use optimization techniques to reduce latency, such as:
+                <ul>
+                    <li><strong>Generational GC:</strong> Divides objects into young and old generations, reducing the number of objects that need frequent scanning.</li>
+                    <li><strong>Concurrent GC:</strong> Runs garbage collection in parallel with the main program to minimize pauses.</li>
+                    <li><strong>Incremental GC:</strong> Breaks the garbage collection process into smaller steps to avoid long execution pauses.</li>
+                </ul>
+                Despite some impact, these improvements make GC a highly effective memory management solution for most applications.
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Efficient Garbage Collection Simulation | OS Project</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>
+
+
