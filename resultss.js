@@ -1,31 +1,28 @@
+// JavaScript for handling result page interactivity and chart generation
+
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("start-analysis").addEventListener("click", function() {
-        document.getElementById("loading-message").style.display = "block";
-        setTimeout(() => {
-            document.getElementById("loading-message").style.display = "none";
-            document.querySelector(".charts").style.display = "block";
-            document.querySelector(".gantt-chart").style.display = "block";
-            document.querySelector(".log-data").style.display = "block";
-            renderResults();
-            drawCharts();
-        }, 2000);
-    });
+    renderResults();
+    drawCharts();
 });
 
 function renderResults() {
     const memoryData = JSON.parse(localStorage.getItem("memoryData")) || [];
     const resultsTable = document.getElementById("log-entries");
-    const usedBefore = memoryData.filter(block => block.status === "used").length;
-    const reachableCount = memoryData.filter(block => block.reachable).length;
-    const freeCount = memoryData.filter(block => block.status === "free").length;
-    const usedAfter = usedBefore - (usedBefore - reachableCount);
+    const usedBefore = document.getElementById("used-before");
+    const usedAfter = document.getElementById("used-after");
     
-    document.getElementById("used-before").textContent = usedBefore;
-    document.getElementById("used-after").textContent = usedAfter;
-
     resultsTable.innerHTML = "";
+    let usedCountBefore = 0;
+    let usedCountAfter = 0;
     
     memoryData.forEach((block, index) => {
+        if (block.status === "used") {
+            usedCountBefore++;
+        }
+        if (block.status === "used" && block.reachable) {
+            usedCountAfter++;
+        }
+
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>Step ${index + 1}</td>
@@ -33,6 +30,9 @@ function renderResults() {
         `;
         resultsTable.appendChild(row);
     });
+    
+    usedBefore.textContent = usedCountBefore;
+    usedAfter.textContent = usedCountAfter;
 }
 
 function drawCharts() {

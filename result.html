@@ -1,119 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simulation Results</title>
-  <link rel="stylesheet" href="results.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation Results</title>
+    <link rel="stylesheet" href="results.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Simulation Results</h1>
-    <p>Detailed analysis of the Garbage Collection Simulation</p>
-  </header>
-  
-  <section class="summary">
-    <h2>Overview</h2>
-    <p>Total Memory Blocks: <span id="total-blocks">20</span></p>
-    <p>Used Blocks Before Collection: <span id="used-before">--</span></p>
-    <p>Used Blocks After Collection: <span id="used-after">--</span></p>
-  </section>
-  
-  <button id="start-analysis">Start Analysis</button>
-  <p id="loading-message" style="display: none; text-align: center;">Loading Charts...</p>
+    <header>
+        <h1>Garbage Collection Simulation - Results</h1>
+        <button onclick="window.location.href='garbage.html'" class="home-button">Home</button>
+    </header>
+    
+    <section class="summary">
+        <h2>Simulation Summary</h2>
+        <p>Total Memory Blocks: <span id="total-blocks">50</span></p>
+        <p>Used Blocks Before Collection: <span id="used-before">--</span></p>
+        <p>Used Blocks After Collection: <span id="used-after">--</span></p>
+        <p>Garbage Collected: <span id="garbage-collected">--</span></p>
+    </section>
+    
+    <div class="controls">
+        <label for="speed-slider">Simulation Speed:</label>
+        <input type="range" id="speed-slider" min="1" max="10" value="5">
+    </div>
 
-  <section class="charts" style="display: none;">
-    <h2>Memory Usage Chart</h2>
-    <canvas id="memoryChart"></canvas>
-  </section>
-  
-  <section class="gantt-chart" style="display: none;">
-    <h2>Gantt Chart - Memory Allocation</h2>
-    <canvas id="ganttChart"></canvas>
-  </section>
-  
-  <section class="log-data" style="display: none;">
-    <h2>Process Log</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Step</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody id="log-entries">
-        <!-- Logs will be populated dynamically -->
-      </tbody>
-    </table>
-  </section>
-  
-  <footer>
-    <p>&copy; 2025 Efficient Garbage Collection Simulation | OS Project</p>
-  </footer>
+    <p id="loading-message" style="display: none; text-align: center;">Processing Data...</p>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      document.getElementById("start-analysis").addEventListener("click", function() {
-        document.getElementById("loading-message").style.display = "block";
-        setTimeout(() => {
-          document.getElementById("loading-message").style.display = "none";
-          document.querySelector(".charts").style.display = "block";
-          document.querySelector(".gantt-chart").style.display = "block";
-          document.querySelector(".log-data").style.display = "block";
-          renderResults();
-          drawCharts();
-        }, 2000);
-      });
-    });
+    <section class="charts">
+        <h2>Memory Usage Chart</h2>
+        <canvas id="memoryChart"></canvas>
+    </section>
+    
+    <section class="log-data">
+        <h2>Execution Log</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Step</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody id="log-entries">
+                <!-- Logs will be populated dynamically -->
+            </tbody>
+        </table>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Efficient Garbage Collection Simulation | OS Project</p>
+    </footer>
 
-    function renderResults() {
-      const memoryData = JSON.parse(localStorage.getItem("memoryData")) || [];
-      const resultsTable = document.getElementById("log-entries");
-      
-      resultsTable.innerHTML = "";
-      
-      memoryData.forEach((block, index) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-          <td>Step ${index + 1}</td>
-          <td>Block ${block.id} - ${block.status}, Reachable: ${block.reachable ? 'Yes' : 'No'}</td>
-        `;
-        resultsTable.appendChild(row);
-      });
-    }
-
-    function drawCharts() {
-      const ctx = document.getElementById("memoryChart").getContext("2d");
-      const memoryData = JSON.parse(localStorage.getItem("memoryData")) || [];
-      
-      let usedCount = memoryData.filter(block => block.status === "used").length;
-      let freeCount = memoryData.filter(block => block.status === "free").length;
-      let reachableCount = memoryData.filter(block => block.reachable).length;
-      let unreachableCount = usedCount - reachableCount;
-      
-      new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: ["Used Blocks", "Free Blocks", "Reachable", "Unreachable"],
-          datasets: [{
-            label: "Memory Distribution",
-            data: [usedCount, freeCount, reachableCount, unreachableCount],
-            backgroundColor: ["#4CAF50", "#ccc", "#FFA500", "#F44336"],
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: true
-            }
-          }
-        }
-      });
-    }
-  </script>
-  <script src="resultss.js"></script>
+    <script src="results.js"></script>
 </body>
 </html>

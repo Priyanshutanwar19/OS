@@ -36,26 +36,17 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Table Styling */
-.results-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.results-table th, .results-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
+/* Summary Section */
+.summary {
     text-align: center;
+    padding: 20px;
+    background: #eef2ff;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
-
-.results-table th {
-    background-color: #2575fc;
-    color: white;
-}
-
-.results-table tr:nth-child(even) {
-    background-color: #f2f2f2;
+.summary p {
+    font-size: 1.2em;
+    margin: 10px 0;
 }
 
 /* Chart Styling */
@@ -70,6 +61,36 @@ canvas {
     max-width: 800px;
     width: 100%;
     height: auto;
+}
+
+/* Execution Log */
+.log-container {
+    margin-top: 30px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.log-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.log-container th, .log-container td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.log-container th {
+    background-color: #2575fc;
+    color: white;
+}
+
+.log-container tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
 /* Button Styling */
@@ -89,21 +110,6 @@ button {
 button:hover {
     background-color: #6a11cb;
     transform: scale(1.05);
-}
-
-/* Loading Message */
-#loading-message {
-    text-align: center;
-    font-size: 1.2em;
-    color: #6a11cb;
-    display: none;
-    margin-top: 20px;
-}
-
-/* Sections Styling */
-.charts, .gantt-chart, .log-data {
-    display: none;
-    margin-top: 30px;
 }
 
 /* Footer Styling */
